@@ -1,0 +1,6 @@
+.project
+.settings
+.tern-project
+node_modules
+dist
+build
