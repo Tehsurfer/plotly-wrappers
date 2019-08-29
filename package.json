@@ -1,6 +1,6 @@
 {
   "name": "plotly-wrappers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A few wrappers to reduce code size for other packages",
   "main": "plot_manager.js",
   "scripts": {

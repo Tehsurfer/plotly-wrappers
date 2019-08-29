@@ -7,6 +7,11 @@ function PlotlyWrappers(chartDiv) {
   _this.plot = undefined
   _this.subplots = false
   _this.plotType = 'scatter'
+  _this.xAxisLabel = 'Time units not found'
+
+  this.setXaxisLabel = function(label){
+    _this.xAxisLabel = label
+  }
 
   this.createChart = function (createChartData, xaxis, id) {
     if (_this.plot !== undefined) {
@@ -59,12 +64,14 @@ function PlotlyWrappers(chartDiv) {
   }
 
   var getLayout = function(){
-    var layout
+    var layout = undefined
     if(_this.plotType === 'bar'){
-      layout = {barmode: 'group'};
+      layout = {
+        barmode: 'group',
+        xaxis: {}
+      };
     } else if ( !_this.subplots ){
       layout = {
-        title: 'Selected Channels Plot ',
         xaxis: {
           type: 'seconds',
           title: 'Seconds'
@@ -81,9 +88,12 @@ function PlotlyWrappers(chartDiv) {
           rows:  Math.ceil(dataTraces.length/2),
           columns: 2,
           pattern: 'independent'
-        }
+        },
+        xaxis: {}
       }  
     }
+    layout.xaxis.title = _this.xAxisLabel
+    return layout
   }
 
   var processData = function (unprocessedData, xaxis, id) {
