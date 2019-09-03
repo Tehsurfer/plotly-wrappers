@@ -17,7 +17,7 @@ function PlotlyWrappers(chartDiv) {
     if (_this.plot !== undefined) {
       Plotly.purge(chartDiv)
     }
-    // _this.initialiseResizeListener(parentDiv)
+    // _this.initialiseResizeListener(chartDiv)
 
     var chartData = processData(createChartData, xaxis, id)
 
@@ -68,7 +68,14 @@ function PlotlyWrappers(chartDiv) {
     if(_this.plotType === 'bar'){
       layout = {
         barmode: 'group',
-        xaxis: {}
+        xaxis: {},
+        margin: {
+          l: 20,
+          r: 20,
+          b: 150,
+          t: 10,
+          pad: 4
+        }
       };
     } else if ( !_this.subplots ){
       layout = {
@@ -80,6 +87,13 @@ function PlotlyWrappers(chartDiv) {
           autorange: true,
           type: 'linear',
           title: 'mV'
+        },
+        margin: {
+          l: 20,
+          r: 20,
+          b: 150,
+          t: 10,
+          pad: 4
         }
       }
     } else {
@@ -176,7 +190,7 @@ function PlotlyWrappers(chartDiv) {
     resizeObject.addEventListener('resize', _ => {
       Plotly.relayout(chartDiv, {
         width: resizeObject.innerWidth,
-        height: resizeObject.innerHeight
+        height: resizeObject.innerHeight + 150
       })
     })
   }
