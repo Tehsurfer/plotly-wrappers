@@ -70,7 +70,7 @@ function PlotlyWrappers(chartDiv) {
         barmode: 'group',
         xaxis: {},
         margin: {
-          l: 20,
+          l: 50,
           r: 20,
           b: 150,
           t: 10,
@@ -89,7 +89,7 @@ function PlotlyWrappers(chartDiv) {
           title: 'mV'
         },
         margin: {
-          l: 20,
+          l: 50,
           r: 20,
           b: 150,
           t: 10,
