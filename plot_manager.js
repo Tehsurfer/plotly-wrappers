@@ -1,5 +1,5 @@
 // plot_manager.js, manages the plot and its data
-const Plotly = require('plotly.js/dist/plotly-basic.min.js')
+const Plotly = require('plotly.js/dist/plotly')
 
 function PlotlyWrappers(chartDiv) {
   var indexList = []
@@ -169,6 +169,18 @@ function PlotlyWrappers(chartDiv) {
     return dataTraces
   }
 
+  this.heatMapPlot = function(data, xHeaders, yHeaders){
+    _this.resetChart()
+    var traces = [{
+      z: data,
+      x: xHeaders,
+      y: yHeaders,
+      type: 'heatmap'
+    }];
+
+    Plotly.newPlot(chartDiv, traces)
+  }
+
   this.plotAll = function(data){
     var dataTraces = processDataMatrix(data)
     _this.plot = Plotly.react(chartDiv, dataTraces, getLayout())  
@@ -181,7 +193,7 @@ function PlotlyWrappers(chartDiv) {
       return
     }
     Plotly.relayout(chartDiv, {
-      width: width,
+      width: width - 8,
       height: height
     })
   }
